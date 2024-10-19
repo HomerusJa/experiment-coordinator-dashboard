@@ -1,11 +1,46 @@
 allow_embedding: false
-name: Rally App 1
+db_schema:
+  images:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: s3i-cam-identifier
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: s3i-message-identifier
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: taken-at
+      type: datetime
+    - admin_ui: {order: 3, width: 200}
+      name: path
+      type: string
+    - admin_ui: {order: 2.5, width: 200}
+      name: sent-at
+      type: datetime
+    - admin_ui: {order: 2.75, width: 200}
+      name: received-at
+      type: datetime
+    - admin_ui: {order: 0.5, width: 200}
+      name: rhizotron-number
+      type: number
+    server: full
+    title: images
+name: Experiment Coordinator Dashboard
 native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
-package_name: Rally_App_1
+package_name: Experiment_Coordinator_Dashboard
 runtime_options:
   client_version: '3'
-  server_spec: {base: python310-minimal}
+  server_spec: {base: python310-datascience}
   server_version: python3-sandbox
   version: 2
-services: []
-startup_form: Form1
+services:
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/tables.yml
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/anvil/secrets.yml
+startup: null
+startup_form: null
+uplink_visible: true
