@@ -1,14 +1,14 @@
-import anvil.tables as tables
-import anvil.tables.query as q
-from anvil.tables import app_tables
-import anvil.secrets
-import anvil.server
-
 class S3IException(Exception):
     """Base exception for all S³I-related exceptions."""
 
-    def __init__(self, message: str, headers: dict | str | None = None, body: dict | str | None = None,
-                 status_code: int | None = None, response: str | None = None):
+    def __init__(
+        self,
+        message: str,
+        headers: dict | str | None = None,
+        body: dict | str | None = None,
+        status_code: int | None = None,
+        response: str | None = None,
+    ):
         super().__init__(message)
 
         self.headers = headers
@@ -40,4 +40,3 @@ class AuthenticationException(S3IException):
 
 class InvalidCredentialsException(AuthenticationException):
     """Raised when the credentials are invalid."""
-  
