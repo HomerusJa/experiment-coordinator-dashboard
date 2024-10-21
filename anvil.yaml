@@ -34,6 +34,13 @@ runtime_options:
   server_spec: {base: python310-datascience}
   server_version: python3-sandbox
   version: 2
+secrets:
+  s3i_id:
+    type: secret
+    value: {K7P2QNQGSCS45AVS: Aj/ueWn7omKpr3mOIT9Lxb2q2CnvLx4BAoYwkEFOwjYrLn97MDnXhvuoKY6+85I5uuyG+R3s1Ju9SyQZPVyc+Zf6c1yMkZ/MBqTdL9N/KB5pl0s/z1/WAVlAVQVeYWUzDaEWsCiBoCqUVbo2h9wIa5xYApf/WxmOFaEACOt+zZCaP9uEn/3O}
+  s3i_secret:
+    type: secret
+    value: {K7P2QNQGSCS45AVS: Pby2Fd0UXbuZbz/BdkoyMswyPFX0DUNVm15UuFYREz4B3OAq5CUDNpw+SfNWd1QimhWTTF7HCdIv5nfB7Ax6EIFE/Cnik/kjHUd5GThB6tllsao1/DdvgtQ8NtomH+E+qA5R0Sy1csxF1fP1DifkTWDne54ar6yJQbiuaGDTZA==}
 services:
 - client_config: {}
   server_config: {}

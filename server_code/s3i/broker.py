@@ -7,6 +7,7 @@ import anvil.server
 from loguru import logger
 import httpx
 
+from . import auth
 from . import exceptions
 
 DEFAULT_BROKER_URL = "https://broker.s3i.vswf.dev"
@@ -17,7 +18,7 @@ class Broker:
         self.broker_url = broker_url
         self.client = client or httpx.AsyncClient()
         self.external_client = client is None
-        self.auth = ClientAuthenticator(id, secret, self.client)
+        self.auth = auth.ClientAuthenticator(id, secret, self.client)
 
     def __del__(self):
         if not self.external_client:
@@ -33,7 +34,7 @@ class Broker:
         response = await self.client.post(url, headers=headers, json=message)
 
         if response.status_code != 201:
-            raise S3IException(f"Failed to send message to {endpoint}.",
+            raise exceptions.S3IException(f"Failed to send message to {endpoint}.",
                                headers=response.headers,
                                body=message,
                                status_code=response.status_code,
@@ -50,7 +51,7 @@ class Broker:
         response = await self.client.get(url, headers=headers)
 
         if response.status_code != 200:
-            raise S3IException(f"Failed to get message from {endpoint}.",
+            raise exceptions.S3IException(f"Failed to get message from {endpoint}.",
                                headers=response.headers,
                                status_code=response.status_code,
                                response=response.text)
